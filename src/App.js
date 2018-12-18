@@ -10,9 +10,11 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <br />
         <Fragment>
           <Switch>
-            <Route exact path='/blogs' component={Blogs} />
+            <Route exact path='/' component={Blogs} />
+            <Route exact path='/Blogs' component={Blogs} />
             <Route exact path='/blogform' component={BlogForm} />
             <Route exact path='/blog/:id' component={Blog} />
           </Switch>

@@ -10,7 +10,7 @@ const Blog = ({ id, name, body, dispatch}) => (
   <div >
     <Link to={`/blog/${id}`}>
       <Segment 
-      size='huge'
+      basic
       inverted>
         {name}
         <br />
@@ -18,7 +18,7 @@ const Blog = ({ id, name, body, dispatch}) => (
       </Segment>
     </Link>
 
-
+<br />
     <Button onClick={() => dispatch({type: 'DELETE', id})}>
     Delete Blog
     </Button>

@@ -15,6 +15,7 @@ const Blogs = ({ blogs }) => ((
       }}>
       Blogs Home
   </h1>
+      <hr />
       
       <Link to={'/blogform'} style={{
         display: "flex",
@@ -25,11 +26,7 @@ const Blogs = ({ blogs }) => ((
       >Add a Blog Post</Button>
       </Link>
 
-    <ul style={{
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column", 
-      justifyContent: 'spaceBetween'}}>
+    <ul>
         {
           blogs.map(blog => (
             <Blog key={blog.id} {...blog} />

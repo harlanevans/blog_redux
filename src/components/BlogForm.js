@@ -27,13 +27,14 @@ class BlogForm extends React.Component {
     const { name, body, } = this.state;
 
     return (
-      <div style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column"
-      }}>
-        <h3>Add Blog</h3>
+      <div>
+        <br />
+        <h3 style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}>Add Blog</h3>
         <Form onSubmit={this.handleSubmit}>
+        <hr />
           <input
             name='name'
             autoFocus
@@ -50,6 +51,7 @@ class BlogForm extends React.Component {
             title="Body"
             onChange={this.handleChange} />
         </Form>
+        <br />
           <Button onClick={this.handleSubmit}>Submit</Button>
       </div>
     )
