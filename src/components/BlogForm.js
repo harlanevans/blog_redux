@@ -1,29 +1,30 @@
 import React from 'react';
 import { connect, } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { Form, Button } from 'semantic-ui-react';
 
 class BlogForm extends React.Component {
-  state = { name: "", };
+  state = { name: "", body: "", };
 
-  handleChange = (e) => {
-    this.setState({ name: e.target.value, });
+  handleChange = ({target: {name, value}}) => {
+    this.setState({[name]: value });
   }
+  
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { dispatch, id, } = this.props;
-    const { name, } = this.state;
-    const blog = { name, id, };
-    dispatch({ type: 'ADD_BLOG', blog, });
+    const { name, body, } = this.state;
+    const blog = { name, body, id, };
+    dispatch({ type: "ADD_BLOG", blog: { name, body } });
     dispatch({ type: "INC_ID" });
-    this.setState({ name: "", });
-
+    this.setState({ name: "", body: "", })
+    this.props.history.push(`/blogs`);
   }
-
 
   render() {
 
-    const { name, } = this.state;
+    const { name, body, } = this.state;
 
     return (
       <div style={{
@@ -31,18 +32,25 @@ class BlogForm extends React.Component {
         alignItems: "center",
         flexDirection: "column"
       }}>
-        <h3>Add A Blog</h3>
-        <form onSubmit={this.handleSubmit}>
+        <h3>Add Blog</h3>
+        <Form onSubmit={this.handleSubmit}>
           <input
-            name={name}
+            name='name'
+            autoFocus
             value={name}
-            placeholder="Blog Name"
+            placeholder="Name"
             title="Blog"
             onChange={this.handleChange} />
-          {/* <Link to='/'> */}
-          <button >Submit</button>
-          {/* </Link> */}
-        </form>
+            </Form>
+        <Form onSubmit={this.handleSubmit}>
+          <input
+            name='body'
+            value={body}
+            placeholder="Body"
+            title="Body"
+            onChange={this.handleChange} />
+        </Form>
+          <Button onClick={this.handleSubmit}>Submit</Button>
       </div>
     )
   }

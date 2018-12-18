@@ -1,18 +1,23 @@
-import React, { Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, Switch, } from 'react-router-dom';
 import Blogs from './components/Blogs';
 import BlogForm from './components/BlogForm';
+import { Container } from 'semantic-ui-react';
+import Blog from './components/Blog';
 
 
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <BlogForm />
-        <Switch>
-          <Route exact path='/' component={Blogs} />
-        </Switch>
-      </Fragment>
+      <Container>
+        <Fragment>
+          <Switch>
+            <Route exact path='/blogs' component={Blogs} />
+            <Route exact path='/blogform' component={BlogForm} />
+            <Route exact path='/blog/:id' component={Blog} />
+          </Switch>
+        </Fragment>
+      </Container>
     );
   }
 }
